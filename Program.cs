@@ -10,35 +10,68 @@ namespace Algorithm_Programs
         static void Main(string[] args)
         {
             Console.Write("Enter the string: ");
+            //Variables
             String word = Console.ReadLine();
             int lengthOfWord = word.Length;
-            Permutation(word, 0 ,lengthOfWord);
+            //Recursive Permutation
+            RecursivePermutation(word, 0, lengthOfWord - 1);
+            //Iterative Permutaton
+            IterativePermutation(word);
         }
-        public static string SwapCharacters (string word, int i , int j)
+        public static void RecursivePermutation(string word, int a, int b) 
+        {
+            if (a == b)
+            {
+                Console.WriteLine(word);
+            }
+            else
+            {
+                for (int i = a; i <= b; i++)
+                {
+                    word = Swapping(word, a, i);
+                    RecursivePermutation(word, a + 1, b);
+                    word = Swapping(word, a, i);
+                }
+            }
+        }
+        public static string Swapping(string word, int i , int j)
         {
             char temp;
             char[] charactersOfWord = word.ToCharArray();
             temp = charactersOfWord[i];
             charactersOfWord[i] = charactersOfWord[j];
             charactersOfWord[j] = temp;
-            string swappedString = new string(charactersOfWord);
-            return swappedString;
+            string str = new string(charactersOfWord);
+            return str;
         }
-        public static void Permutation(string word, int l, int r)
+        public static int CalculatingFactorial(int lengthOfWord)
         {
-            if (l == r)
+            int factorial = 1;
+            for (int i = 1; i <= lengthOfWord; i++)
             {
-                Console.WriteLine(word);
+                factorial *= i;
             }
-            else
+            return factorial;
+        }
+        public static void IterativePermutation(string word)
+        {
+            int lengthOfWord = word.Length;
+            int factorial = CalculatingFactorial(lengthOfWord);
+            for (int i = 0; i < factorial; i++)
             {
-                for (int i = l; i < r; i++)
+                string originalWord = word;
+                int temp = i;
+                for (int j = word.Length; j >= 1; j--)
                 {
-                    word = SwapCharacters(word, l, i);
-                    Permutation(word, l + 1, r);
-                    word = SwapCharacters(word, l, i);
+                    int quotient = temp / j;
+                    int reminder = temp % j;
+                    Console.Write(originalWord[reminder]);
+                    originalWord = originalWord.Remove(reminder, 1);
+                    temp = quotient;
                 }
+                Console.WriteLine();
             }
         }
     }
+
 }
