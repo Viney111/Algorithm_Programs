@@ -69,14 +69,14 @@ namespace Algorithm_Programs
             Console.WriteLine("\nArrays after Insertion Sorting: ");
             DisplaySortedArray(names);
         }
-        public static void BubbleSort(string[] names)
+        public static void BubbleSort<T>( T [] names)
         {
-            string temp;
+            T temp;
             for (int i = 0; i < names.Length; i++)
             {
                 for (int j = 1; j < names.Length; j++)
                 {
-                    if (names[j].CompareTo(names[j-1]) < 0)
+                    if (Comparer<T>.Default.Compare(names[j],names[j-1]) < 0)
                     {
                         temp = names[j];
                         names[j] = names[j-1];
@@ -87,9 +87,9 @@ namespace Algorithm_Programs
             Console.WriteLine("Arrays after Bubble Sorting: ");
             DisplaySortedArray(names);
         }
-        public static void DisplaySortedArray(string [] names)
+        public static void DisplaySortedArray<T>(T [] names)
         {
-            foreach(string name in names)
+            foreach(T name in names)
             {
                 Console.Write(name + " ");
             }

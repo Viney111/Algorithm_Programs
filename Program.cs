@@ -9,26 +9,17 @@ namespace Algorithm_Programs
     {
         static void Main(string[] args)
         {
-            int[] numbers = { 56, 102, 89, 21, 15, 18, 15, 10 };
-            string names = "Viney,Vishal,Yash,Meena,Sagar,Gaurav,Gauri,Preeti";
-            string[] arrayOfNames = names.Split(',');
-            Console.WriteLine("Strings Before Sorting : ");
-            foreach (string name in arrayOfNames)
-            {
-                Console.Write(name + " ");
-            }
-            Console.WriteLine();
-            //Bubble Sorting
-            ArraySorting.BubbleSort(arrayOfNames);
-            //Insertion Sorting
-            ArraySorting.InsertionSort(arrayOfNames);
-            //Merge Sorting
-            ArraySorting.MergeSort(numbers, 0, numbers.Length - 1);
-            Console.WriteLine("\nNumbers after Sorting");
-            foreach(int number in numbers)
-            {
-                Console.Write(number + " ");
-            }
+            string name1 = "heart";
+            string name2 = "earth";
+            char[] charactersOfName1 = name1.ToCharArray();
+            char[] charactersOfName2 = name2.ToCharArray();
+            ArraySorting.BubbleSort<char>(charactersOfName1);
+            ArraySorting.BubbleSort<char>(charactersOfName2);
+            string name1Sorted = new string(charactersOfName1);
+            string name2Sorted = new string(charactersOfName2);
+            string result = name1Sorted == name2Sorted ? $"{name1} & {name2} are anagrams" : $"{name1} & {name2} are not anagrams";
+            Console.WriteLine($"\n{result}");
+
         }
     }
 }
