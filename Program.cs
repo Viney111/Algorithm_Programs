@@ -17,6 +17,10 @@ namespace Algorithm_Programs
                 Console.Write(name + " ");
             }
             Console.WriteLine();
+            //Bubble Sorting
+            ArraySorting.BubbleSort(arrayOfNames);
+            //Insertion Sorting
+            ArraySorting.InsertionSort(arrayOfNames);
         }
     }
 }
