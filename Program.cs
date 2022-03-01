@@ -9,7 +9,8 @@ namespace Algorithm_Programs
     {
         static void Main(string[] args)
         {
-            PrimeNumbers.PrimeNumberRange(0,1000);
+            PrimeNumbers.PrimePallindromeNumberRange(0,1000);
+            PrimeNumbers.PrintList(PrimeNumbers.primesPallindromes);
         }
     }
 }

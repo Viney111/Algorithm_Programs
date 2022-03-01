@@ -8,7 +8,8 @@ namespace Algorithm_Programs
 {
     internal class PrimeNumbers
     {
-        public static void PrimeNumberRange(int minNumber, int maxNumber)
+        public static List<int> primesPallindromes = new List<int>();
+        public static void PrimePallindromeNumberRange(int minNumber, int maxNumber)
         {
             for(int i = minNumber; i <= maxNumber; i++)
             {
@@ -24,18 +25,38 @@ namespace Algorithm_Programs
                             break;
                         }
                     }
-                    if (isPrime == true)
+                    if (isPrime && CheckPallindrome(i))
                     {
-                        Console.Write(i + " ");
+                        primesPallindromes.Add(i);
                     }
                 }
                 else
                 {
                     if( i == 2)
                     {
-                        Console.Write(i + " ");
+                        primesPallindromes.Add(i);
                     }
                 }
+            }
+        }
+        public static bool CheckPallindrome(int number)
+        {
+            int reminder = 0;
+            int reversedNumber = 0;
+            int temp = number;
+            while(temp > 0)
+            {
+                reminder = temp % 10;
+                temp = temp / 10;
+                reversedNumber = reversedNumber * 10 + reminder;
+            }
+            return reversedNumber == number? true: false;
+        }
+        public static void PrintList(List<int> numbers)
+        {
+            foreach(int i in numbers)
+            {
+                Console.Write(i + " ");
             }
         }
     }
