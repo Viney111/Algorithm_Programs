@@ -9,26 +9,38 @@ namespace Algorithm_Programs
     {
         static void Main(string[] args)
         {
-            List<string> wordsList = new List<string>();
-            wordsList.Add("We, at Bridgelabz provides real time learning experience for all the students, no matter which branch they are from.");
-            string[] words = String.Join(" ", wordsList).Split(' ');
-            Array.Sort(words);
-            Console.Write($"\n-----Enter the word to be searched from the above sentence :- ");
-            string searchedWord = Console.ReadLine();
-            foundOrNot(words,searchedWord);
+            string names = "Viney,Vishal,Yash,Meena,Sagar,Gaurav,Gauri,Preeti";
+            string[] arrayOfNames = names.Split(',');
+            Console.WriteLine("Strings Before Sorting : ");
+            foreach (string name in arrayOfNames)
+            {
+                Console.Write(name + " ");
+            }
+            Console.WriteLine();
+            InsertionSort(arrayOfNames);
         }
-        static void foundOrNot(string[] wordsList, string wordToBeSearched)
+        public static void InsertionSort(string[] names)
         {
-            int result = Array.BinarySearch(wordsList, wordToBeSearched);
-            if (result > 0)
+            string temp;
+            for (int i = 0; i < names.Length; i++)
             {
-                Console.WriteLine($"{wordToBeSearched} is found & its index is {result}");
+                for (int j = i + 1; j < names.Length; j++)
+                {
+                    if (names[j].CompareTo(names[i]) < 0)
+                    {
+                        temp = names[i];
+                        names[i] = names[j];
+                        names[j] = temp;
+                    }
+
+                }
             }
-            else
+            Console.WriteLine("Strings After Sorting : ");
+            foreach (string name in names)
             {
-                Console.WriteLine($"{wordToBeSearched} is not found");
+                Console.Write(name + " ");
             }
         }
-    }
 
+    }
 }
