@@ -17,9 +17,9 @@ namespace Algorithm_Programs
                 Console.Write(name + " ");
             }
             Console.WriteLine();
-            InsertionSort(arrayOfNames);
+            SwappingSort(arrayOfNames);
         }
-        public static void InsertionSort(string[] names)
+        public static void SwappingSort(string[] names)
         {
             string temp;
             for (int i = 0; i < names.Length; i++)
@@ -35,7 +35,7 @@ namespace Algorithm_Programs
 
                 }
             }
-            Console.WriteLine("Strings After Sorting : ");
+            Console.WriteLine("Strings After SwappingSorting : ");
             foreach (string name in names)
             {
                 Console.Write(name + " ");
