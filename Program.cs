@@ -9,6 +9,7 @@ namespace Algorithm_Programs
     {
         static void Main(string[] args)
         {
+            int[] numbers = { 56, 102, 89, 21, 15, 18, 15, 10 };
             string names = "Viney,Vishal,Yash,Meena,Sagar,Gaurav,Gauri,Preeti";
             string[] arrayOfNames = names.Split(',');
             Console.WriteLine("Strings Before Sorting : ");
@@ -21,6 +22,13 @@ namespace Algorithm_Programs
             ArraySorting.BubbleSort(arrayOfNames);
             //Insertion Sorting
             ArraySorting.InsertionSort(arrayOfNames);
+            //Merge Sorting
+            ArraySorting.MergeSort(numbers, 0, numbers.Length - 1);
+            Console.WriteLine("\nNumbers after Sorting");
+            foreach(int number in numbers)
+            {
+                Console.Write(number + " ");
+            }
         }
     }
 }

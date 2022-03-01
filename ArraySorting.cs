@@ -8,6 +8,51 @@ namespace Algorithm_Programs
 {
     public class ArraySorting
     {
+        public static void MergeSort(int[] numbers, int l, int r)
+        {
+            if(l >= r)
+            {
+                return;
+            }
+            int mid = (l + r)/2;
+            MergeSort(numbers, l, mid);
+            MergeSort(numbers, mid + 1, r);
+            Merge(numbers, l, mid, r);
+        }
+        public static void Merge(int[] numbers, int l, int mid, int r)
+        {
+            int [] mergedArray = new int[r - l + 1];
+            int i = l;
+            int j = mid +1;
+            int k = 0;
+            while(i <= mid && j <= r)
+            {
+                if(numbers[i] <= numbers[j])
+                {
+                    mergedArray[k] = numbers[i];
+                    k++;i++;
+                }
+                else
+                {
+                    mergedArray[k] = numbers[j];
+                    j++;k++;
+                }
+            }
+            while(i <= mid)
+            {
+                mergedArray[k] = numbers[i];
+                k++; i++;
+            }
+            while (j <= r)
+            {
+                mergedArray[k] = numbers[j];
+                k++; j++;
+            }
+            for (int a = 0,b = l; a < mergedArray.Length; a++ , b++)
+            {
+                numbers[b] = mergedArray[a];
+            }
+        }
         public static void InsertionSort(string[] names)
         {
             for(int i = 1; i < names.Length; i++)
