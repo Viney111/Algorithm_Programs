@@ -18,16 +18,16 @@ namespace Algorithm_Programs
                 Console.Write(name + " ");
             }
             Console.WriteLine();
-            //Bubble Sorting
-            ArraySorting.BubbleSort(arrayOfNames);
-            //Insertion Sorting
-            ArraySorting.InsertionSort(arrayOfNames);
+            ////Bubble Sorting
+            //string [] sortedArray = ArraySorting<string>.BubbleSort(arrayOfNames);
+            ////Insertion Sorting
+            //string[] sortedArray1 = ArraySorting<string>.InsertionSort(arrayOfNames);
             //Merge Sorting
-            int [] sortedArray = ArraySorting.MergeSort(numbers, 0, numbers.Length - 1);
-            Console.WriteLine("\nNumbers after Merge Sorting");
-            foreach(int number in sortedArray)
+            int[] sortedArray2 = ArraySorting<int>.MergeSort(numbers, 0, numbers.Length - 1);
+            Console.WriteLine("\n After Sorting");
+            foreach (int name in sortedArray2)
             {
-                Console.Write(number + " ");
+                Console.Write(name + " ");
             }
         }
     }

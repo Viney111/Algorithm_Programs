@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 
 namespace Algorithm_Programs
 {
-    public class ArraySorting
+    public class ArraySorting <T>
     {
-        public static int[] MergeSort(int[] numbers, int l, int r)
+        public static T[] MergeSort(T[] numbers, int l, int r)
         {
             if(l == r)
             {
-                int[] baseArray = new int[1];
+                T[] baseArray = new T [1];
                 baseArray[0] = numbers[l];
                 return baseArray;
             }
             int mid = (l + r)/2;
-            int[] fsh = MergeSort(numbers, l, mid);
-            int[] ssh = MergeSort(numbers, mid + 1 , r);
-            int[] fsa = MergeTwoSortedArrays(fsh, ssh);
+            T[] fsh = MergeSort(numbers, l, mid);
+            T[] ssh = MergeSort(numbers, mid + 1 , r);
+            T[] fsa = MergeTwoSortedArrays(fsh, ssh);
             return fsa;
         }
-        public static int[] MergeTwoSortedArrays(int[] numbers1, int[] numbers2 )
+        public static T[] MergeTwoSortedArrays(T[] numbers1, T[] numbers2 )
         {
             int i = 0;
             int j = 0;
             int k = 0;
-            int[] result = new int[numbers2.Length + numbers1.Length];
+            T[] result = new T[numbers2.Length + numbers1.Length];
             while(i < numbers1.Length && j < numbers2.Length)
             {
-                if(numbers1[i] < numbers2[j])
+                if(Comparer<T>.Default.Compare(numbers1[i],numbers2[j]) < 0)
                 {
                     result[k] = numbers1[i];
                     i++;k++;
@@ -52,47 +52,43 @@ namespace Algorithm_Programs
                 j++; k++;
             }
         return result;
-        } 
-        public static void InsertionSort(string[] names)
-        {
-            for(int i = 1; i < names.Length; i++)
-            {
-                string temp = names[i];
-                int j = i - 1;
-                while(j >= 0 && names[j].CompareTo(temp) > 0)
-                {
-                    names[j + 1] = names[j];
-                    j--;
-                }
-            names[j + 1] = temp;
-            }
-            Console.WriteLine("\nArrays after Insertion Sorting: ");
-            DisplaySortedArray(names);
         }
-        public static void BubbleSort(string[] names)
+        public static T[] InsertionSort(T[] names)
         {
-            string temp;
+            for (int i = 1; i < names.Length; i++)
+            {
+                T temp = names[i];
+                for (int j = i - 1; j >= 0; j--)
+                {
+                    if (Comparer<T>.Default.Compare(names[j],temp) > 0)
+                    {
+                        names[j + 1] = names[j];
+                        names[j] = temp;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return names;
+        }
+        public static T[] BubbleSort(T[] names)
+        {
+            T temp;
             for (int i = 0; i < names.Length; i++)
             {
                 for (int j = 1; j < names.Length; j++)
                 {
-                    if (names[j].CompareTo(names[j-1]) < 0)
+                    if (Comparer<T>.Default.Compare(names[j],names[j - 1]) < 0)
                     {
                         temp = names[j];
-                        names[j] = names[j-1];
-                        names[j-1] = temp;
+                        names[j] = names[j - 1];
+                        names[j - 1] = temp;
                     }
                 }
             }
-            Console.WriteLine("Arrays after Bubble Sorting: ");
-            DisplaySortedArray(names);
-        }
-        public static void DisplaySortedArray(string [] names)
-        {
-            foreach(string name in names)
-            {
-                Console.Write(name + " ");
-            }
+            return names;
         }
     }
 }
