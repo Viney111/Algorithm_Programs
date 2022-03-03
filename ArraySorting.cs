@@ -26,18 +26,19 @@ namespace Algorithm_Programs
         }
         public static void BubbleSort(string[] names)
         {
-            string temp;
-            for (int i = 0; i < names.Length; i++)
+            for(int itr  = 0; itr <= names.Length - 1; itr++)
             {
-                for (int j = 1; j < names.Length; j++)
+                string temp;
+                for (int j = 0; j < names.Length -1 - itr; j++)
                 {
-                    if (names[j].CompareTo(names[j-1]) < 0)
+                    if (names[j].CompareTo(names[j + 1]) > 0)
                     {
-                        temp = names[j];
-                        names[j] = names[j-1];
-                        names[j-1] = temp;
+                        temp = names[j + 1];
+                        names[j + 1] = names[j];
+                        names[j] = temp;
                     }
                 }
+
             }
             Console.WriteLine("Arrays after Bubble Sorting: ");
             DisplaySortedArray(names);

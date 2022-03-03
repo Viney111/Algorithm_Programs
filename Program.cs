@@ -20,7 +20,7 @@ namespace Algorithm_Programs
             //Bubble Sorting
             ArraySorting.BubbleSort(arrayOfNames);
             //Insertion Sorting
-            ArraySorting.InsertionSort(arrayOfNames);
+            //ArraySorting.InsertionSort(arrayOfNames);
         }
     }
 }
