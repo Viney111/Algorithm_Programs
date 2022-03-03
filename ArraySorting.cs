@@ -8,51 +8,51 @@ namespace Algorithm_Programs
 {
     public class ArraySorting
     {
-        public static void MergeSort(int[] numbers, int l, int r)
+        public static int[] MergeSort(int[] numbers, int l, int r)
         {
-            if(l >= r)
+            if(l == r)
             {
-                return;
+                int[] baseArray = new int[1];
+                baseArray[0] = numbers[l];
+                return baseArray;
             }
             int mid = (l + r)/2;
-            MergeSort(numbers, l, mid);
-            MergeSort(numbers, mid + 1, r);
-            Merge(numbers, l, mid, r);
+            int[] fsh = MergeSort(numbers, l, mid);
+            int[] ssh = MergeSort(numbers, mid + 1 , r);
+            int[] fsa = MergeTwoSortedArrays(fsh, ssh);
+            return fsa;
         }
-        public static void Merge(int[] numbers, int l, int mid, int r)
+        public static int[] MergeTwoSortedArrays(int[] numbers1, int[] numbers2 )
         {
-            int [] mergedArray = new int[r - l + 1];
-            int i = l;
-            int j = mid +1;
+            int i = 0;
+            int j = 0;
             int k = 0;
-            while(i <= mid && j <= r)
+            int[] result = new int[numbers2.Length + numbers1.Length];
+            while(i < numbers1.Length && j < numbers2.Length)
             {
-                if(numbers[i] <= numbers[j])
+                if(numbers1[i] < numbers2[j])
                 {
-                    mergedArray[k] = numbers[i];
-                    k++;i++;
+                    result[k] = numbers1[i];
+                    i++;k++;
                 }
                 else
                 {
-                    mergedArray[k] = numbers[j];
-                    j++;k++;
+                    result[k] = numbers2[j];
+                    j++; k++;
                 }
             }
-            while(i <= mid)
+            while(i < numbers1.Length)
             {
-                mergedArray[k] = numbers[i];
-                k++; i++;
+                result[k] = numbers1[i];
+                i++;k++;
             }
-            while (j <= r)
+            while (j < numbers1.Length)
             {
-                mergedArray[k] = numbers[j];
-                k++; j++;
+                result[k] = numbers2[j];
+                j++; k++;
             }
-            for (int a = 0,b = l; a < mergedArray.Length; a++ , b++)
-            {
-                numbers[b] = mergedArray[a];
-            }
-        }
+        return result;
+        } 
         public static void InsertionSort(string[] names)
         {
             for(int i = 1; i < names.Length; i++)

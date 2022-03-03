@@ -23,9 +23,9 @@ namespace Algorithm_Programs
             //Insertion Sorting
             ArraySorting.InsertionSort(arrayOfNames);
             //Merge Sorting
-            ArraySorting.MergeSort(numbers, 0, numbers.Length - 1);
-            Console.WriteLine("\nNumbers after Sorting");
-            foreach(int number in numbers)
+            int [] sortedArray = ArraySorting.MergeSort(numbers, 0, numbers.Length - 1);
+            Console.WriteLine("\nNumbers after Merge Sorting");
+            foreach(int number in sortedArray)
             {
                 Console.Write(number + " ");
             }
