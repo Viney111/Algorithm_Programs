@@ -10,16 +10,21 @@ namespace Algorithm_Programs
     {
         public static void InsertionSort(string[] names)
         {
-            for(int i = 1; i < names.Length; i++)
+            for (int i = 1; i < names.Length; i++)
             {
                 string temp = names[i];
-                int j = i - 1;
-                while(j >= 0 && names[j].CompareTo(temp) > 0)
+                for (int j = i - 1; j >= 0; j--)
                 {
-                    names[j + 1] = names[j];
-                    j--;
+                    if (names[j].CompareTo(temp) > 0)
+                    {
+                        names[j + 1] = names[j];
+                        names[j] = temp;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-            names[j + 1] = temp;
             }
             Console.WriteLine("\nArrays after Insertion Sorting: ");
             DisplaySortedArray(names);

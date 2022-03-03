@@ -17,7 +17,7 @@ namespace Algorithm_Programs
                 Console.Write(name + " ");
             }
             Console.WriteLine();
-            ArraySorting.BubbleSort(arrayOfNames);
+            //ArraySorting.BubbleSort(arrayOfNames);
             ArraySorting.InsertionSort(arrayOfNames);
         }
     }
